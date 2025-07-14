@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FabBoard 2.0</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- CSV Parser -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+  <!-- Header Bar -->
+  <div id="header-blue-bar"></div>
+
+  <!-- Main Dashboard Area -->
+  <main id="main-content">
+    <h1 class="dashboard-title">Fabrication Dashboard</h1>
+
+    <div id="dashboard">
+      <div class="dashboard-content">
+        <!-- Column 1 -->
+        <div class="dashboard-column">
+          <!-- Code Red Widget -->
+          <div class="widget" id="code-red-widget">
+            <h2>Code Red Jobs per Line</h2>
+            <!-- Static Table Header -->
+            <div class="table-header">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Line</th>
+                    <th>Part #</th>
+                    <th>Current Workstation</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- Scrollable Table Body -->
+            <div class="widget-body scrollable">
+              <table id="code-red-table">
+                <tbody>
+                  <!-- Injected rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Challenges Widget -->
+          <div class="widget" id="challenges-widget">
+            <h2>Challenges</h2>
+            <div class="widget-body scrollable">
+              <ul>
+                <li>Laser West - Not Punching</li>
+                <li>Laser West - Computer down</li>
+                <li>Not enough Laser Operators - in progress</li>
+                <li><s>Tumbler Rocks Worn down</s> - Fixed</li>
+                <li>AccurPress/Small Amada need new tools</li>
+                <li>Line Requests come through inappropriate/unstructured channels - in progress</li>
+                <li><s>Scrap Metal Piling Up</s> - fixed</li>
+                <li>Assembly Lines finding too many stripped tap holes - test holes more often!</li>
+                <!-- Additional list items -->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="dashboard-column">
+          <div class="widget">
+            <h2>Total Jobs on Critical List</h2>
+            <div class="big-number" id="total-jobs">--</div>
+          </div>
+
+          <div class="widget">
+            <h2>Jobs by Workstation</h2>
+            <canvas id="workstationChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="dashboard-column">
+          <div class="widget">
+            <h2>Days Since Last Safety Incident</h2>
+            <div class="big-number" id="safetyDays">--</div>
+          </div>
+
+          <div class="widget">
+            <h2>Goal vs Completed (# of parts)</h2>
+            <canvas id="goalChart"></canvas>
+          </div>
+
+          <div class="widget">
+            <h2>Expected vs Actual Attendance</h2>
+            <canvas id="attendanceChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Bar -->
+  <div id="footer-blue-bar"></div>
+
+  <!-- Data Loader & Auto-Scroll -->
+  <script src="data-loader.js"></script>
+</body>
+</html>

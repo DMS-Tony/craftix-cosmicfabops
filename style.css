@@ -1,0 +1,170 @@
+/* Custom Craftix Dashboard Styles with Header & Footer */
+
+@font-face {
+  font-family: "Cal Sans";
+  src: url('external/CalSans-Regular.ttf') format('truetype');
+}
+
+/* Fixed Header & Footer Bars */
+#header-blue-bar,
+#footer-blue-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-color: #1c558c;
+  z-index: 100;
+}
+#header-blue-bar { top: 0; padding-top: 10px; }
+#footer-blue-bar { bottom: 0; }
+
+/* Reset & Base Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Cal Sans", sans-serif;
+  background-color: #C9E0F2;
+  color: #1c558c;
+  overflow: hidden;
+}
+
+/* Main Content Area */
+#main-content {
+  padding: 40px 0 30px; /* header + footer */
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Dashboard Wrapper */
+#dashboard {
+  width: 100%;
+  max-width: 1900px;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Three-Column Grid */
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 1rem;        /* no vertical gap, horizontal gap */
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Column Flex Stacking */
+.dashboard-content .dashboard-column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;      /* allow children to shrink */
+  gap: 1rem;         /* vertical gap between widgets */
+  box-sizing: border-box;
+}
+
+/* Column Ratios */
+.dashboard-column:nth-child(1) .widget:nth-child(1) { flex: 3 1 0; }
+.dashboard-column:nth-child(1) .widget:nth-child(2) { flex: 2 1 0; }
+.dashboard-column:nth-child(2) .widget:nth-child(1) { flex: 1 1 0; }
+.dashboard-column:nth-child(2) .widget:nth-child(2) { flex: 4 1 0; }
+.dashboard-column:nth-child(3) .widget:nth-child(1) { flex: 1 1 0; }
+.dashboard-column:nth-child(3) .widget:nth-child(2) { flex: 2 1 0; }
+.dashboard-column:nth-child(3) .widget:nth-child(3) { flex: 2 1 0; }
+
+/* Base Widget Styling */
+.widget {
+  background-color: white;
+  border: 2px solid #1c558c;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  min-height: 0;
+}
+
+/* Widget Headers */
+.widget h2 {
+  margin: 0.5rem;
+  font-size: 1.5em;
+}
+
+/* Scrollable Widget Body */
+.widget-body {
+  flex: 1 1 auto;
+  position: relative;
+  overflow: hidden;
+}
+.widget-body.scrollable {
+  overflow-y: scroll;           /* still scrollable */
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE 10+ */
+}
+
+/* WebKit browsers (Chrome, Safari, Edge Chromium) */
+.widget-body.scrollable::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Big Numbers Centered */
+.widget .big-number {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+}
+
+/* Chart Canvas Fill */
+.widget canvas {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Column 1 Table & List */
+.dashboard-column:nth-child(1) table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+.dashboard-column:nth-child(1) thead th {
+  font-size: 1.5em;
+  border-bottom: 2px solid #1c558c;
+  padding: 0.5rem;
+  text-align: left;
+}
+.dashboard-column:nth-child(1) tbody td {
+  font-size: 1.25em;
+  border-bottom: 1px solid rgba(28,85,140,0.2);
+  padding: 0.4rem;
+}
+.dashboard-column:nth-child(1) ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+.dashboard-column:nth-child(1) li {
+  margin-bottom: 0.5rem;
+  font-size: 1em;
+}
+
+/* Responsive: Stack Columns */
+@media (max-width: 1024px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-content .dashboard-column {
+    height: auto;
+  }
+  .dashboard-content { gap: 1rem; }
+}
