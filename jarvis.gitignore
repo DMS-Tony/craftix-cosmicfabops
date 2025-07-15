@@ -1,0 +1,24 @@
+# System/OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor folders
+.vscode/
+.idea/
+
+# Backup and temp files
+*.log
+*.bak
+*.tmp
+*~  
+*.swp
+
+# If using Node/Tailwind in future:
+node_modules/
+dist/
+.env
+
+# Optional: ignore PHP session/cache
+*.sess
+*.cache
